@@ -1,52 +1,286 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
+    <!-- Font Awesome for Social Media Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #ffffff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1e3a8a;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn {
+            background-color: #2563eb;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Container styling for sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #1e3a8a;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: #2563eb;
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Projects Section Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .project-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #e5e7eb;
+            transition: transform 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-card h3 {
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        .tag {
+            background-color: #f3f4f6;
+            color: #4b5563;
+            font-size: 0.85rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        .project-link {
+            color: #2563eb;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .skill-badge {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        /* Footer / Contact */
+        footer {
+            background-color: #1f2937;
+            color: #ffffff;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        .social-icons a:hover {
+            color: #3b82f6;
+        }
+        footer p {
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        /* Responsive design Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.25rem; }
+            .nav-links { display: none; } /* Simplifies mobile layout */
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Hello! Welcome to My Portfolio</h1>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">DevPortfolio</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-    <hr>
+    <!-- Hero / Intro Section -->
+    <header class="hero" id="about">
+        <h1>Hi, I'm [Your Name]</h1>
+        <p>A passionate developer focused on building clean, user-friendly applications and solving complex problems with modern code.</p>
+        <a href="#contact" class="btn">Get In Touch</a>
+    </header>
 
-    <h2>About Me</h2>
-    <p>Hello! My name is Your Name.</p>
-    <p>I am a student and I am learning HTML and web development.</p>
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            
+            <!-- Project 1 -->
+            <div class="project-card">
+                <h3>E-Commerce Platform</h3>
+                <p>A full-stack online store application featuring secure user authentication, shopping cart flows, and integrated checkout mechanics.</p>
+                <div class="project-tags">
+                    <span class="tag">React</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">MongoDB</span>
+                </div>
+                <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+            </div>
 
-    <hr>
+            <!-- Project 2 -->
+            <div class="project-card">
+                <h3>Task Management API</h3>
+                <p>A production-ready RESTful API engineered to let teams assign, track, and filter operational tasks seamlessly.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">PostgreSQL</span>
+                </div>
+                <a href="#" class="project-link">View Code <i class="fas fa-arrow-right"></i></a>
+            </div>
 
-    <h2>My Skills</h2>
-    <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>Java</li>
-        <li>Python</li>
-    </ul>
+            <!-- Project 3 -->
+            <div class="project-card">
+                <h3>Data Visualisation Dashboard</h3>
+                <p>An interactive, responsive dashboard processing system log files to track live platform metrics and error distributions.</p>
+                <div class="project-tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">D3.js</span>
+                    <span class="tag">HTML/CSS</span>
+                </div>
+                <a href="#" class="project-link">View Live <i class="fas fa-arrow-right"></i></a>
+            </div>
 
-    <hr>
+        </div>
+    </section>
 
-    <h2>My Education</h2>
-    <p>Currently pursuing my education.</p>
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <h2 class="section-title">My Tech Stack</h2>
+        <div class="skills-container">
+            <div class="skill-badge">JavaScript (ES6+)</div>
+            <div class="skill-badge">Python</div>
+            <div class="skill-badge">React.js</div>
+            <div class="skill-badge">Node.js</div>
+            <div class="skill-badge">HTML5 & CSS3</div>
+            <div class="skill-badge">Git & GitHub</div>
+            <div class="skill-badge">SQL / NoSQL</div>
+            <div class="skill-badge">REST APIs</div>
+        </div>
+    </section>
 
-    <hr>
-
-    <h2>My Projects</h2>
-    <ul>
-        <li>Login Page</li>
-        <li>Registration Form</li>
-        <li>Personal Portfolio</li>
-    </ul>
-
-    <hr>
-
-    <h2>Contact Me</h2>
-    <p>Email: yourname@gmail.com</p>
-    <p>Phone: 1234567890</p>
-
-    <hr>
-
-    <h3>Thank You for Visiting My Portfolio!</h3>
+    <!-- Footer / Contact Section -->
+    <footer id="contact">
+        <div class="social-icons">
+            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>&copy; 2026 [Your Name]. Built with clean code & HTML/CSS.</p>
+    </footer>
 
 </body>
 </html>
+
+
